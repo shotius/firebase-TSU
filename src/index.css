@@ -1,13 +1,39 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+    font-family: sans-serifa;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin: 0;
+}
+
+.singUp-constainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;;
+}
+
+.signUp-form { 
+    border: 1px solid;
+    min-width: 300px;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.input-div { 
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+input {
+    padding: 3px;
+}
+.error {
+    color: red;
+}
+
+h1 {
+    text-align: center;
 }
