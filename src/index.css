@@ -21,6 +21,10 @@ form {
   border: 1px solid;
   padding: 10px;
 }
+
+.signUp-form {
+    width: 20%;
+}
 .header {
   display: flex;
   justify-content: flex-end;
@@ -42,6 +46,6 @@ input {
   color: red;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
