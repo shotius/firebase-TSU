@@ -1,20 +1,18 @@
-import React, {useRef, useState} from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { useHistory } from 'react-router'
 
-const SignUp = () => {
+export default function ResetPassword() {
     const emailRef = useRef()
-    const passwordRef = useRef()
     const [error, setError] = useState('')
-    const { login } = useAuth()
+    const { resetPassword } = useAuth()
     const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
 
         try {
-            await login(emailRef.current.value, passwordRef.current.value)
+            await resetPassword(emailRef.current.value)
             history.push('/')
         } catch(err) {
             console.log(err);
@@ -25,25 +23,18 @@ const SignUp = () => {
     return (
         <div className="singUp-constainer">
             <form className="signUp-form" onSubmit={handleSubmit}>
-                <h2>Login In</h2>
+                <h2>Reset Password</h2>
                 <div className="error">{error}</div>
                 <div className="input-div">
                     <label htmlFor="email">Email</label> 
                     <input type="email" ref={emailRef} />
                 </div>
-                <div className="input-div">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" ref={passwordRef}  /> 
-                </div>
-                <button type="submit">Login</button>
+                <button type="submit">Reset</button>
             </form>
                 <div style={{textAlign: "center"}}>
-                    Want to create an account? <Link to="/signup">Sign Up</Link>
+                    back to  <Link to="/login">login</Link>
                     <br/><br/>
-                    <Link to="/reset-password">Reset Password</Link>
                 </div>
         </div>
     )
 }
-
-export default SignUp

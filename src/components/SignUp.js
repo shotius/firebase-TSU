@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react'
 import {Link} from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useHistory } from 'react-router'
 
 const SignUp = () => {
     const emailRef = useRef()
@@ -8,6 +9,7 @@ const SignUp = () => {
     const passwordConfirmRef = useRef()
     const [error, setError] = useState('')
     const { signup } = useAuth()
+    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -20,6 +22,7 @@ const SignUp = () => {
 
         try {
             await signup(emailRef.current.value, passwordRef.current.value)
+            history.push('/login')
         } catch(err) {
             console.log(err);
             setError(err.message)

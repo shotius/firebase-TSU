@@ -1,14 +1,17 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from "firebase/app";
+import "firebase/auth";
 
-const app = firebase.initializeApp({
+const firebaseConfig = {
         apiKey: "AIzaSyBoTQiWPh_K3s-YBNY96lurhLVAaj4gRSw",
         authDomain: "fir-tsu.firebaseapp.com",
+        databaseURL: "https://fir-tsu-default-rtdb.europe-west1.firebasedatabase.app",
         projectId: "fir-tsu",
         storageBucket: "fir-tsu.appspot.com",
         messagingSenderId: "546594983316",
-        appId: "1:546594983316:web:1d4bc7f5e0bf15c7e0d381"
-})
+        appId: "1:546594983316:web:3afff71a867ade9be0d381"
+      };
 
-export const auth = app.auth()
-export default app
+const app = firebase.initializeApp(firebaseConfig);
+
+export const auth = app.auth();
+export default firebase;
