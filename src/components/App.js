@@ -1,11 +1,11 @@
 import React from "react";
 import { AuthProvider } from "../context/AuthContext";
-import SignUp from "./SignUp";
-import Login from './Login'
+import SignUp from "./authPages/SignUp";
+import Login from './authPages/Login'
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from "./Dashboard";
+import Dashboard from "./dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import ResetPassword from "./ResetPassword";
+import ResetPassword from "./authPages/ResetPassword";
 
 function App() {
   return (

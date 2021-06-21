@@ -1,18 +1,20 @@
-import React, { useRef, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import React, {useRef, useState} from 'react'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
+import { useHistory } from 'react-router'
 
-export default function ResetPassword() {
+const SignUp = () => {
     const emailRef = useRef()
+    const passwordRef = useRef()
     const [error, setError] = useState('')
-    const { resetPassword } = useAuth()
+    const { login } = useAuth()
     const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
 
         try {
-            await resetPassword(emailRef.current.value)
+            await login(emailRef.current.value, passwordRef.current.value)
             history.push('/')
         } catch(err) {
             console.log(err);
@@ -23,18 +25,25 @@ export default function ResetPassword() {
     return (
         <div className="singUp-constainer">
             <form className="signUp-form" onSubmit={handleSubmit}>
-                <h2>Reset Password</h2>
+                <h2>Login In</h2>
                 <div className="error">{error}</div>
                 <div className="input-div">
                     <label htmlFor="email">Email</label> 
                     <input type="email" ref={emailRef} />
                 </div>
-                <button type="submit">Reset</button>
+                <div className="input-div">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" ref={passwordRef}  /> 
+                </div>
+                <button type="submit">Login</button>
             </form>
                 <div style={{textAlign: "center"}}>
-                    back to  <Link to="/login">login</Link>
+                    Want to create an account? <Link to="/signup">Sign Up</Link>
                     <br/><br/>
+                    <Link to="/reset-password">Reset Password</Link>
                 </div>
         </div>
     )
 }
+
+export default SignUp
