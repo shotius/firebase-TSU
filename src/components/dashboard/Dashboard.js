@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useHistory } from "react-router";
-import firebase from "../../firebase";
+import {database} from "../../firebase";
 import TodoList from "../Todos/TodoList";
 import NewTodo from "../Todos/NewTodo";
 import Header from '../header/Header'
@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   // get data from firebase database
   useEffect(() => {
-    const todoRef = firebase.database().ref("Todo");
+    const todoRef = database.ref("Todo");
     todoRef.on("value", (data) => {
       const todos = data.val();
       const arr = [];
@@ -41,17 +41,17 @@ export default function Dashboard() {
 
   // adding data to firebase database
   const addTodoHandler = (todo) => {
-    const todoRef = firebase.database().ref("Todo");
+    const todoRef = database.ref("Todo");
     todoRef.push(todo);
   };
 
   const deleteTodoHandler = (id) => {
-    const todoRef = firebase.database().ref("Todo").child(id);
+    const todoRef = database.ref("Todo").child(id);
     todoRef.remove();
   };
 
   const updateTodohandler = (todo) => {
-    const todoRef = firebase.database().ref("Todo").child(todo.id);
+    const todoRef = database.ref("Todo").child(todo.id);
     todoRef.update({
       completed: !todo.completed
     });
