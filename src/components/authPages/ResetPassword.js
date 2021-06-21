@@ -29,7 +29,7 @@ export default function ResetPassword() {
                     <label htmlFor="email">Email</label> 
                     <input type="email" ref={emailRef} />
                 </div>
-                <button type="submit">Reset</button>
+                <button type="submit" className="btn-full">Reset</button>
             </form>
                 <div style={{textAlign: "center"}}>
                     back to  <Link to="/login">login</Link>

@@ -35,7 +35,7 @@ const SignUp = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password" ref={passwordRef}  /> 
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="btn-full">Login</button>
             </form>
                 <div style={{textAlign: "center"}}>
                     Want to create an account? <Link to="/signup">Sign Up</Link>

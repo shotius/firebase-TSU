@@ -46,7 +46,7 @@ const SignUp = () => {
                     <label htmlFor="passwordConfirm">Confirm Password</label>
                     <input type="password" ref={passwordConfirmRef}  /> 
                 </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="btn-full">Sign Up</button>
             </form>
                 <div>
                     Already have an account? <Link to='/login'>Log In</Link>

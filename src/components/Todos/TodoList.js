@@ -1,4 +1,5 @@
 import React from "react";
+import './todosList.css'
 
 export default function TodoList({
   todos,
@@ -9,10 +10,12 @@ export default function TodoList({
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <span>{todo.title} </span>
-          <span><b>{todo.completed ? 'finished': 'active'}</b> </span>
-          <button onClick={() => updateTodohandler(todo)}>Update</button>
-          <button onClick={() => deleteTodoHandler(todo.id)}>Delete</button>
+          <span className={`fb-40 ${todo.completed ? 'todo-done': ''}`} >{todo.title} </span>
+          <span ><b>{todo.completed ? 'finished': 'active'}</b> </span>
+          <span>
+          <button onClick={() => updateTodohandler(todo)} className="m10">Update</button>
+          <button onClick={() => deleteTodoHandler(todo.id)} className="m10">Delete</button>
+          </span>
         </li>
       ))}
     </ul>

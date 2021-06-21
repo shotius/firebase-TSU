@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import "./newTodo.css";
 
 export default function NewTodo({ addTodoHandler }) {
-  const [title, setTitle] = useState("");
+  const titleRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const todo = {
-      title,
+
+    const newTodo = {
+      title: titleRef.current.value,
       completed: false,
     };
-    addTodoHandler(todo);
-    setTitle("");
+
+    addTodoHandler(newTodo);
+   titleRef.current.value = "";
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {/* <h2>Create TODO</h2> */}
-        <div className="form-control">
-          <label htmlFor="todo-text">New Todo</label>
-          <input
-            id="todo-text"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-        </div>
-        <button type="submit">Create</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="new-todo-form">
+      <div className="form-control">
+        <label htmlFor="todo-text">New Todo</label>
+        <input id="todo-text" ref={titleRef} />
+      </div>
+      <button type="submit">ADD</button>
+    </form>
   );
 }

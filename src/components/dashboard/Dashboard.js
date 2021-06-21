@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import firebase from "../../firebase";
 import TodoList from "../Todos/TodoList";
 import NewTodo from "../Todos/NewTodo";
+import Header from '../header/Header'
 
 export default function Dashboard() {
   const [error, setError] = useState();
@@ -22,8 +23,8 @@ export default function Dashboard() {
         arr.push({ id, ...todos[id] });
       }
       setTodosList(arr);
-      console.log(arr);
     });
+
   }, []);
 
   // firebase handle logout user
@@ -59,7 +60,7 @@ export default function Dashboard() {
   return (
     <div>
       <div className="error">{error}</div>
-      <div style={{ textAlign: "end" }}>{currentUser.email}</div>
+     <Header currentUser={currentUser} handleLogout={handleLogout}/>
       <h1>Dashboard</h1>
       <NewTodo addTodoHandler={addTodoHandler} />
       <TodoList
@@ -67,9 +68,7 @@ export default function Dashboard() {
         deleteTodoHandler={deleteTodoHandler}
         updateTodohandler={updateTodohandler}
       />
-      <div style={{ textAlign: "center" }}>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
+     
     </div>
   );
 }

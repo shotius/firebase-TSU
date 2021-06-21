@@ -1,39 +1,47 @@
 html {
-    font-family: sans-serifa;
+  font-family: sans-serifa;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .singUp-constainer {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.signUp-form { 
-    border: 1px solid;
-    min-width: 300px;
-    padding: 10px;
-    margin: 20px 0px;
+form {
+  width: 40%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  border: 1px solid;
+  padding: 10px;
 }
-
-.input-div { 
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0px;
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.m10 {
+  margin: 10px;
+}
+.input-div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
 }
 
 input {
-    padding: 3px;
+  padding: 3px;
 }
 .error {
-    color: red;
+  color: red;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
