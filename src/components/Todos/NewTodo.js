@@ -7,7 +7,7 @@ export default function NewTodo({ addTodoHandler }) {
     e.preventDefault();
     const todo = {
       title,
-      compolated: false,
+      completed: false,
     };
     addTodoHandler(todo);
     setTitle("");

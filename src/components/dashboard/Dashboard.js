@@ -22,7 +22,7 @@ export default function Dashboard() {
         arr.push({ id, ...todos[id] });
       }
       setTodosList(arr);
-      console.log(arr)
+      console.log(arr);
     });
   }, []);
 
@@ -44,10 +44,17 @@ export default function Dashboard() {
     todoRef.push(todo);
   };
 
-  function deleteTodoHandler(id) {
-    const todoRef = firebase.database().ref("Todo").child(id)
-    todoRef.remove()
-  }
+  const deleteTodoHandler = (id) => {
+    const todoRef = firebase.database().ref("Todo").child(id);
+    todoRef.remove();
+  };
+
+  const updateTodohandler = (todo) => {
+    const todoRef = firebase.database().ref("Todo").child(todo.id);
+    todoRef.update({
+      completed: !todo.completed
+    });
+  };
 
   return (
     <div>
@@ -55,7 +62,11 @@ export default function Dashboard() {
       <div style={{ textAlign: "end" }}>{currentUser.email}</div>
       <h1>Dashboard</h1>
       <NewTodo addTodoHandler={addTodoHandler} />
-      <TodoList todos={todoList} deleteTodoHandler={deleteTodoHandler}/>
+      <TodoList
+        todos={todoList}
+        deleteTodoHandler={deleteTodoHandler}
+        updateTodohandler={updateTodohandler}
+      />
       <div style={{ textAlign: "center" }}>
         <button onClick={handleLogout}>Logout</button>
       </div>
